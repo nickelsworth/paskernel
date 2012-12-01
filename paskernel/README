@@ -1,0 +1,25 @@
+This is a quick and dirty demo of how to write a toy OS 'kernel' in Free Pascal.
+Basically it is an RTL that runs on bare PC hardware.
+
+First of all, you must be running linux to compile this...
+To compile you need the latest fpc 1.9.x sources. You need to copy some parts of
+the RTL, namely everything from rtl/i386, rtl/objfpc and rtl/inc should go to
+from_fpc/i386, from_fpc/objfpc and from_fpc/inc. You also need to have nasm
+installed. To build just run the build.sh script. It will produce a
+helloworld kernel image in ELF format, called kernel. It is multiboot compliant,
+to boot it, use grub.
+
+from the grub console type:
+  kernel (hd0,0)/myprojs/tralala/fpcos/kernel
+  boot
+
+(replace (hd0,0)/..etc with the hdd, partition and path to the kernel)
+and you should get an ugly green textmode screen, with a 'Hello, world!' in the
+top-left corner. Impressed? :) While this is far from being able to compete with
+e.g. linux, it is supposed to show you how to start making your own OS kernel in
+Pascal.
+
+Oh, by the way, this code is public domain, so do whatever you want with it :)
+
+ Enjoy! :)
+ Nikolay Nikolov, nickysn@users.sourceforge.net
